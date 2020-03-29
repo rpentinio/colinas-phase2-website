@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace ColinasPhase2Website
+namespace ColinasPhase2Website.Models
 {
     public partial class ResidencyStatus
     {

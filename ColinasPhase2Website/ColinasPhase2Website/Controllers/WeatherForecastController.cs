@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using ColinasPhase2Website.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 
@@ -28,8 +29,6 @@ namespace ColinasPhase2Website.Controllers
         [HttpGet]
         public IEnumerable<WeatherForecast> Get()
         {
-            var test = _context.Residents.ToArray();
-
             var rng = new Random();
             return Enumerable.Range(1, 5).Select(index => new WeatherForecast
             {

@@ -1,8 +1,10 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
 
-namespace ColinasPhase2Website
+namespace ColinasPhase2Website.Models
 {
     public partial class Q722BxgwCnContext : DbContext
     {
@@ -112,6 +114,13 @@ namespace ColinasPhase2Website
 
             OnModelCreatingPartial(modelBuilder);
         }
+
+        #region Residents
+        public virtual IEnumerable<Residents> GetAllResidents()
+        {
+            return Residents.ToArray();
+        }
+        #endregion
 
         partial void OnModelCreatingPartial(ModelBuilder modelBuilder);
     }

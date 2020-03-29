@@ -1,0 +1,23 @@
+﻿.home-main-div {
+    display: flex;
+}
+
+.home-side-divs {
+    width: 20%;
+}
+
+.home-middle-div {
+    width: 60%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.home-buttons-table {
+    width: 100%;
+    table-layout: fixed;
+}
+
+.home-buttons {
+    width: 100%;
+}
