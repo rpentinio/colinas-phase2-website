@@ -1,0 +1,11 @@
+﻿.footer-style {
+    text-align: center;
+    margin-top: 20px;
+    background-color: mediumseagreen;
+    height: 50px;
+}
+
+footer p {
+    display: inline-block;
+    vertical-align: middle;
+}
