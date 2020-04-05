@@ -17,6 +17,8 @@ namespace ColinasPhase2Website.Models
         {
         }
 
+        public virtual DbSet<ImportantNumbers> ImportantNumbers { get; set; }
+        public virtual DbSet<Officers> Officers { get; set; }
         public virtual DbSet<ResidencyStatus> ResidencyStatus { get; set; }
         public virtual DbSet<Residents> Residents { get; set; }
 
@@ -31,6 +33,53 @@ namespace ColinasPhase2Website.Models
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            modelBuilder.Entity<ImportantNumbers>(entity =>
+            {
+                entity.HasKey(e => e.NumberId)
+                    .HasName("PRIMARY");
+
+                entity.Property(e => e.NumberId)
+                    .HasColumnName("NumberID")
+                    .HasColumnType("int(11)");
+
+                entity.Property(e => e.Label)
+                    .HasColumnType("varchar(45)")
+                    .HasCharSet("utf8mb4")
+                    .HasCollation("utf8mb4_0900_ai_ci");
+
+                entity.Property(e => e.PhoneNumber)
+                    .HasColumnType("varchar(45)")
+                    .HasCharSet("utf8mb4")
+                    .HasCollation("utf8mb4_0900_ai_ci");
+            });
+
+            modelBuilder.Entity<Officers>(entity =>
+            {
+                entity.HasKey(e => e.OfficerId)
+                    .HasName("PRIMARY");
+
+                entity.HasIndex(e => e.ResidentId)
+                    .HasName("idx_residentid");
+
+                entity.Property(e => e.OfficerId)
+                    .HasColumnName("OfficerID")
+                    .HasColumnType("int(11)");
+
+                entity.Property(e => e.Position)
+                    .HasColumnType("varchar(45)")
+                    .HasCharSet("utf8mb4")
+                    .HasCollation("utf8mb4_0900_ai_ci");
+
+                entity.Property(e => e.ResidentId)
+                    .HasColumnName("ResidentID")
+                    .HasColumnType("int(11)");
+
+                entity.HasOne(d => d.Resident)
+                    .WithMany(p => p.Officers)
+                    .HasForeignKey(d => d.ResidentId)
+                    .HasConstraintName("fk_resident_id");
+            });
+
             modelBuilder.Entity<ResidencyStatus>(entity =>
             {
                 entity.HasKey(e => e.StatusId)
@@ -120,6 +169,13 @@ namespace ColinasPhase2Website.Models
         {
             return Residents.ToArray();
         }
+
+        public virtual void AddResident(Residents resident)
+        {
+            Residents.Add(resident);
+            SaveChanges();
+        }
+
         #endregion
 
         partial void OnModelCreatingPartial(ModelBuilder modelBuilder);

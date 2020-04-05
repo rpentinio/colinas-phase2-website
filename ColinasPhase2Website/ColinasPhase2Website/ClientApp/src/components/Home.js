@@ -49,15 +49,19 @@ export class Home extends Component {
                     <img className="card-img-top" src={AboutImage} alt="About Us" />
                     <div className="card-body">
                         <h5 className="card-title">About Us</h5>
-                        <p className="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                        <a href="/counter" className="btn btn-primary">Read More</a>
+                        <p className="card-text">
+                            COLINAS VERDES is a part of a master planned community that will provide residents basic needs within the neighborhood. Shops, workplaces and civic buildings are in close proximity to the residential area.
+                        </p>
+                        <a href="/add-members" className="btn btn-primary">Read More</a>
                     </div>
                 </div>
                 <div className="card home-cards">
                     <img className="card-img-top" src={FacilitiesImage} alt="Facilities" />
                     <div className="card-body">
                         <h5 className="card-title">Facilities</h5>
-                        <p className="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                        <p className="card-text">
+                            Experience First Class Amenities in our Luxurious Country Clubhouse. NOW OPEN TO SERVE YOU! Become a LOT OWNER NOW and you get your COUNTRY CLUB MEMBERSHIP FREE!
+                        </p>
                         <a href="/fetch-data" className="btn btn-primary">Read More</a>
                     </div>
                 </div>
@@ -73,30 +77,36 @@ export class Home extends Component {
         );
     }
 
+    static displayButtons() {
+        return (
+            <div className="home-main-div">
+                <div className="home-side-divs"></div>
+                <div className="home-middle-div">
+                    <table className="home-buttons-table">
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <button className="btn btn-primary btn-lg home-buttons" onClick={this.onCounterBtnClick}>Counter</button>
+                                </td>
+                                <td>
+                                    <button className="btn btn-primary btn-lg home-buttons" onClick={this.onFetchDataBtnClick}>Fetch Data</button>
+                                </td>
+                                <td>
+                                    <button className="btn btn-primary btn-lg home-buttons" onClick={this.onMembersListClick}>Members List</button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div className="home-side-divs"></div>
+            </div>
+        );
+    }
+
   render () {
       return (
           <div>
-              <div className="home-main-div">
-                  <div className="home-side-divs"></div>
-                  <div className="home-middle-div">
-                      <table className="home-buttons-table">
-                          <tbody>
-                              <tr>
-                                  <td>
-                                      <button className="btn btn-primary btn-lg home-buttons" onClick={this.onCounterBtnClick}>Counter</button>
-                                  </td>
-                                  <td>
-                                      <button className="btn btn-primary btn-lg home-buttons" onClick={this.onFetchDataBtnClick}>Fetch Data</button>
-                                  </td>
-                                  <td>
-                                      <button className="btn btn-primary btn-lg home-buttons" onClick={this.onMembersListClick}>Members List</button>
-                                  </td>
-                              </tr>
-                          </tbody>
-                      </table>
-                  </div>
-                  <div className="home-side-divs"></div>
-              </div>
+              {/*Home.displayButtons()*/}
               {Home.displayHomeCards()}
               {Home.displayMap()}
           </div>

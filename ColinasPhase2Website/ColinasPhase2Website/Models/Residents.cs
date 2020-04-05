@@ -5,6 +5,11 @@ namespace ColinasPhase2Website.Models
 {
     public partial class Residents
     {
+        public Residents()
+        {
+            Officers = new HashSet<Officers>();
+        }
+
         public int ResidentId { get; set; }
         public string LastName { get; set; }
         public string FirstName { get; set; }
@@ -15,5 +20,7 @@ namespace ColinasPhase2Website.Models
         public string StreetName { get; set; }
         public string Phase { get; set; }
         public string ResidentStatus { get; set; }
+
+        public virtual ICollection<Officers> Officers { get; set; }
     }
 }
