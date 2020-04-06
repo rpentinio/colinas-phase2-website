@@ -20,15 +20,15 @@ namespace ColinasPhase2Website.Controllers
         }
 
         [HttpPost("[action]")]
-        public IActionResult Add([FromBody] Residents resident)
+        public string Add([FromBody] Residents resident)
         {
             if (resident != null)
             {
                 _context.AddResident(resident);
-                return Ok();
+                return "New user was added.";
             }
 
-            return Ok();
+            return "An issue was encountered.";
         }
     }
 }

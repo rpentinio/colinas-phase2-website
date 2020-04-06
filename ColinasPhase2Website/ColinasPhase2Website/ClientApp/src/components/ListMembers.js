@@ -29,6 +29,7 @@ export class ListMembers extends Component {
                         <th>Street Name</th>
                         <th>Phase</th>
                         <th>Status</th>
+                        <th>Actions</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -43,6 +44,9 @@ export class ListMembers extends Component {
                             <td>{member.streetName}</td>
                             <td>{member.phase}</td>
                             <td>{member.residnetStatus}</td>
+                            <td>
+                                <a href="#" className="btn btn-link">Edit</a>
+                            </td>
                         </tr>
                     )}
                 </tbody>

@@ -170,6 +170,11 @@ namespace ColinasPhase2Website.Models
             return Residents.ToArray();
         }
 
+        public virtual Residents GetResident(int residentId)
+        {
+            return Residents.Where(u => u.ResidentId == residentId).FirstOrDefault();
+        }
+
         public virtual void AddResident(Residents resident)
         {
             Residents.Add(resident);
