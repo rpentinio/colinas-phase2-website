@@ -181,6 +181,12 @@ namespace ColinasPhase2Website.Models
             SaveChanges();
         }
 
+        public virtual void EditResident(Residents resident)
+        {
+            Update(resident);
+            SaveChanges();
+        }
+
         #endregion
 
         partial void OnModelCreatingPartial(ModelBuilder modelBuilder);

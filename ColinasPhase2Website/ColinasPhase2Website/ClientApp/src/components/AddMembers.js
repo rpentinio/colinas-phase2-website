@@ -13,6 +13,7 @@ export class AddMembers extends Component {
         this.handleSubmit = this.handleSubmit.bind(this);
 
         this.state = {
+            residentId: "",
             lastName: "",
             firstName: "",
             nickname: "",
@@ -22,6 +23,12 @@ export class AddMembers extends Component {
             streetName: "",
             phase: "",
             residentStatus: ""
+        }
+    }
+
+    componentDidMount() {
+        if (this.props.isEdit) {
+            this.getUserToEdit(this.props.match.params.residentId);
         }
     }
 
@@ -35,30 +42,70 @@ export class AddMembers extends Component {
         event.preventDefault();
         const data = this.state;
 
-        let response = await fetch('ResidentsAdd/Add', {
-            method: 'POST',
-            headers: {
-                "Content-Type": "application/json",
-                "Accept": "application/json"
-            },
-            body: JSON.stringify(data)
-        });
+        // Edit Member
+        if (this.props.isEdit) {
+            let response = await fetch('ResidentsAdd/Edit', {
+                method: 'POST',
+                headers: {
+                    "Content-Type": "application/json",
+                    "Accept": "application/json"
+                },
+                body: JSON.stringify(data)
+            });
 
-        let result = await response.json();
-        alert(result);
+            let result = await response.json();
+            alert(result);
 
-        // Clear the form contents
-        this.setState({
-            lastName: "",
-            firstName: "",
-            nickname: "",
-            email: "",
-            phoneNumber: "",
-            blockLot: "",
-            streetName: "",
-            phase: "",
-            residentStatus: ""
-        });
+            // TODO: Redirect to home page
+        }
+        // Add Member
+        else {
+            let response = await fetch('ResidentsAdd/Add', {
+                method: 'POST',
+                headers: {
+                    "Content-Type": "application/json",
+                    "Accept": "application/json"
+                },
+                body: JSON.stringify(data)
+            });
+
+            let result = await response.json();
+            alert(result);
+
+            // Clear the form contents
+            this.setState({
+                lastName: "",
+                firstName: "",
+                nickname: "",
+                email: "",
+                phoneNumber: "",
+                blockLot: "",
+                streetName: "",
+                phase: "",
+                residentStatus: ""
+            });
+        }
+    }
+
+    getUserToEdit(residentId) {
+        let param = encodeURIComponent(residentId);
+
+        fetch('ResidentsAdd/GetResident?residentId=' + param)
+            .then(response => response.json())
+            .then(result => {
+                this.setState({
+                    residentId: result.residentId,
+                    lastName: result.lastName,
+                    firstName: result.firstName,
+                    nickname: result.nickname,
+                    email: result.email,
+                    phoneNumber: result.phoneNumber,
+                    blockLot: result.blockLot,
+                    streetName: result.streetName,
+                    phase: result.phase,
+                    residentStatus: result.residentStatus
+                });
+            });
     }
 
     displayForm() {
@@ -114,9 +161,14 @@ export class AddMembers extends Component {
     }
 
     render() {
+        let pageLabel = "Add Member";
+        if (this.props.isEdit) {
+            pageLabel = "Edit Member";
+        }
+
         return (
             <div>
-                <h1 id="addMember">Add Member</h1>
+                <h1 id="pageLabel">{pageLabel}</h1>
                 {this.displayForm()}
             </div>
         );

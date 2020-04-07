@@ -45,7 +45,7 @@ export class ListMembers extends Component {
                             <td>{member.phase}</td>
                             <td>{member.residnetStatus}</td>
                             <td>
-                                <a href="#" className="btn btn-link">Edit</a>
+                                <a href={"/edit-members/" + member.residentId } className="btn btn-link">Edit</a>
                             </td>
                         </tr>
                     )}

@@ -19,6 +19,19 @@ namespace ColinasPhase2Website.Controllers
             _context = context;
         }
 
+        [HttpGet("[action]")]
+        public Residents GetResident(int residentId)
+        {
+            Residents residentToEdit = new Residents();
+
+            if (residentId >= 1)
+            {
+                residentToEdit = _context.GetResident(residentId);
+            }
+
+            return residentToEdit;
+        }
+
         [HttpPost("[action]")]
         public string Add([FromBody] Residents resident)
         {
@@ -26,6 +39,18 @@ namespace ColinasPhase2Website.Controllers
             {
                 _context.AddResident(resident);
                 return "New user was added.";
+            }
+
+            return "An issue was encountered.";
+        }
+
+        [HttpPost("[action]")]
+        public string Edit([FromBody] Residents resident)
+        {
+            if (resident != null)
+            {
+                _context.EditResident(resident);
+                return "User details updated.";
             }
 
             return "An issue was encountered.";

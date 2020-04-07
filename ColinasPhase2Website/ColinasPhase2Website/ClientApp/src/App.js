@@ -19,7 +19,8 @@ export default class App extends Component {
             <Route path='/counter' component={Counter} />
             <Route path='/fetch-data' component={FetchData} />
             <Route path='/members-list' component={ListMembers} />
-            <Route path='/add-members' component={AddMembers} />
+            <Route path='/add-members' render={(props) => <AddMembers {...props} isEdit={false} />} />
+            <Route path='/edit-members/:residentId' render={(props) => <AddMembers {...props} isEdit={true} />} />
         </Layout>
     );
   }
