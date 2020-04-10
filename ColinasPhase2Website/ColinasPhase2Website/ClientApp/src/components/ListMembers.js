@@ -1,4 +1,5 @@
 ﻿import React, { Component } from 'react';
+//import DataTable from 'react-data-table-component';
 
 export class ListMembers extends Component {
     static displayName = ListMembers.name;
@@ -16,7 +17,78 @@ export class ListMembers extends Component {
     }
 
     static renderMembersTable(members) {
+        //const data = members;
+        //const columns = [
+        //    {
+        //        name: "Last Name",
+        //        selector: "lastName",
+        //        sortable: true,
+        //        wrap: true
+        //    },
+        //    {
+        //        name: "First Name",
+        //        selector: "firstName",
+        //        sortable: true,
+        //        wrap: true
+        //    },
+        //    {
+        //        name: "Nickame",
+        //        selector: "nickname",
+        //        sortable: true,
+        //        wrap: true
+        //    },
+        //    {
+        //        name: "Email",
+        //        selector: "email",
+        //        sortable: true,
+        //        wrap: true
+        //    },
+        //    {
+        //        name: "Phone Number",
+        //        selector: "phoneNumber",
+        //        sortable: true,
+        //        wrap: true
+        //    },
+        //    {
+        //        name: "Block/Lot",
+        //        selector: "blockLot",
+        //        sortable: true,
+        //        wrap: true
+        //    },
+        //    {
+        //        name: "Street Name",
+        //        selector: "streetName",
+        //        sortable: true,
+        //        wrap: true
+        //    },
+        //    {
+        //        name: "Phase",
+        //        selector: "phase",
+        //        sortable: true
+        //    },
+        //    {
+        //        name: "Status",
+        //        selector: "residentStatus",
+        //        sortable: true,
+        //        wrap: true
+        //    },
+        //    {
+        //        name: "Actions",
+        //        button: true,
+        //        cell: row => <a href={"/edit-members/"} className="btn btn-link">Edit</a>
+        //    },
+        //];
+
         return (
+            //<DataTable
+            //    title="List Of Members"
+            //    keyField="residentId"
+            //    columns={columns}
+            //    data={data}
+            //    fixedHeader
+            //    fixedHeaderScrollHeight="300px"
+            ///>
+
             <table className='table table-striped' aria-labelledby="membersList">
                 <thead>
                     <tr>
@@ -43,7 +115,7 @@ export class ListMembers extends Component {
                             <td>{member.blockLot}</td>
                             <td>{member.streetName}</td>
                             <td>{member.phase}</td>
-                            <td>{member.residnetStatus}</td>
+                            <td>{member.residentStatus}</td>
                             <td>
                                 <a href={"/edit-members/" + member.residentId } className="btn btn-link">Edit</a>
                             </td>

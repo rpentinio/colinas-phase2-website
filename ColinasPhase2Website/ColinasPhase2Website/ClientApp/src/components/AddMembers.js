@@ -56,7 +56,8 @@ export class AddMembers extends Component {
             let result = await response.json();
             alert(result);
 
-            // TODO: Redirect to home page
+            // Redirect to members list after updating
+            this.props.history.push(`/members-list`);
         }
         // Add Member
         else {
