@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import '../styles/Home.css';
+import HeaderImage from '../images/logo-header.png';
 import AboutImage from '../images/about-us-leaf.jpg';
 import FacilitiesImage from '../images/facilities-billiards.jpg';
 import ContactUsImage from '../images/contact-us-phone.jpg';
@@ -65,7 +66,7 @@ export class Home extends Component {
                         <a href="/fetch-data" className="btn btn-primary">Read More</a>
                     </div>
                 </div>
-                <div className="card home-cards">
+                <div className="card home-cards-last">
                     <img className="card-img-top" src={ContactUsImage} alt="Contact Us" />
                     <div className="card-body">
                         <h5 className="card-title">Contact Us</h5>
@@ -73,6 +74,14 @@ export class Home extends Component {
                         <a href="/members-list" className="btn btn-primary">Read More</a>
                     </div>
                 </div>
+            </div>
+        );
+    }
+
+    static displayHeader() {
+        return (
+            <div className="home-header-div">
+                <img className="home-header-img" src={HeaderImage} />
             </div>
         );
     }
@@ -107,6 +116,7 @@ export class Home extends Component {
       return (
           <div>
               {/*Home.displayButtons()*/}
+              {Home.displayHeader()}
               {Home.displayHomeCards()}
               {Home.displayMap()}
           </div>

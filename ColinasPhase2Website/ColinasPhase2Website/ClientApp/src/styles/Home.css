@@ -1,4 +1,9 @@
-﻿.home-main-div {
+﻿.home-header-img {
+    width: 100%;
+    padding-bottom: 10px;
+}
+
+.home-main-div {
     display: flex;
 }
 
@@ -40,4 +45,8 @@
 .home-cards {
     width: 33%;
     margin-right: 10px;
+}
+
+.home-cards-last {
+    width: 33%;
 }
