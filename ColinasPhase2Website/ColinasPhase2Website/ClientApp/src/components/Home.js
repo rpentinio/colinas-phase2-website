@@ -81,7 +81,7 @@ export class Home extends Component {
     static displayHeader() {
         return (
             <div className="home-header-div">
-                <img className="home-header-img" src={HeaderImage} />
+                <img className="home-header-img" src={HeaderImage} alt="Banner" />
             </div>
         );
     }

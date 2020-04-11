@@ -1,4 +1,5 @@
 ﻿import React, { Component } from 'react';
+import '../styles/ListMembers.css';
 //import DataTable from 'react-data-table-component';
 
 export class ListMembers extends Component {
@@ -14,6 +15,15 @@ export class ListMembers extends Component {
 
     componentDidMount() {
         this.populateMembersData();
+    }
+
+    static renderHeaderAndButtons() {
+        return (
+            <div className="header-div">
+                <h1 id="membersList">List Of Members</h1>
+                <a href="/add-members" className="btn btn-primary" >Add</a>
+            </div>
+        );
     }
 
     static renderMembersTable(members) {
@@ -133,7 +143,7 @@ export class ListMembers extends Component {
 
         return (
             <div>
-                <h1 id="membersList">List Of Members</h1>
+                {ListMembers.renderHeaderAndButtons()}
                 {contents}
             </div>
         );
